@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 
 interface BeerCardProps {
     id: string
@@ -9,10 +9,12 @@ interface BeerCardProps {
     price: number;
     idBrewery: string;
     breweryName: string;
-    breweryCountry: string
+    breweryCountry: string;
+    onDelete: (id: string) => void;
 }
 
-const BeerCard: React.FC<BeerCardProps> = ({ id, name, description, abv, price, breweryName, breweryCountry }) => {
+const BeerCard: React.FC<BeerCardProps> = ({ id, name, description, abv, price, breweryName, breweryCountry, onDelete }) => {
+    const navigate = useNavigate();
     return (
         <div style={styles.card}>
             <h2 style={styles.title}>{name}</h2>
@@ -32,11 +34,19 @@ const BeerCard: React.FC<BeerCardProps> = ({ id, name, description, abv, price, 
             <p>
                 <Link to={`/beers/${id}`} style={styles.link}>More infos...</Link>
             </p>
+            <div style={styles.actions}>
+                <button style={styles.editButton} onClick={() =>navigate(`/beers/edit/${id}`)}>
+                    Edit
+                </button>
+                <button style={styles.deleteButton} onClick={() => onDelete(id)}>
+                    Delete
+                </button>
+            </div>
         </div>
     );
 };
 
-const styles = {
+const styles: { [key: string]: React.CSSProperties } = {
     card: {
         border: '1px solid #ddd',
         borderRadius: '8px',
@@ -63,6 +73,27 @@ const styles = {
         fontSize: '0.9rem',
         color: '#666',
         marginTop: '4px',
+    },
+    actions: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        marginTop: '16px',
+    },
+    editButton: {
+        backgroundColor: '#007bff',
+        color: '#fff',
+        padding: '8px 12px',
+        border: 'none',
+        borderRadius: '4px',
+        cursor: 'pointer',
+    },
+    deleteButton: {
+        backgroundColor: '#dc3545',
+        color: '#fff',
+        padding: '8px 12px',
+        border: 'none',
+        borderRadius: '4px',
+        cursor: 'pointer',
     },
 };
 

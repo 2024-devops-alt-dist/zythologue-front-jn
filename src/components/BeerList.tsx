@@ -9,14 +9,16 @@ interface Beer {
     price: number;
     id_brewery: string;
     brewery_name: string;
-    brewery_country: string
+    brewery_country: string;
+    onDelete: (id: string) => void;
 }
 
 interface BeerListProps {
-    beers: Beer[];
+    beers: Beer[]
+    onDelete: (id: string) => void;
 }
 
-const BeerList: React.FC<BeerListProps> = ({ beers }) => {
+const BeerList: React.FC<BeerListProps> = ({ beers, onDelete }) => {
     return (
         <div style={styles.wrapper}>
             {beers.map((beer) => (
@@ -30,6 +32,7 @@ const BeerList: React.FC<BeerListProps> = ({ beers }) => {
                     idBrewery={beer.id_brewery}
                     breweryName={beer.brewery_name}
                     breweryCountry={beer.brewery_country}
+                    onDelete={onDelete}
                 />
             ))}
         </div>

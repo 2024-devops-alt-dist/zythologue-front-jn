@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getBeers } from '../api/beersApi';
+import { getBeers, deleteBeer } from '../api/beersApi';
 import BeerList from '../components/BeerList';
 import {useNavigate} from "react-router-dom";
 
@@ -27,13 +27,23 @@ const BeersPage: React.FC = () => {
         return <p>Loading beers...</p>;
     }
 
+    const handleDelete = async (id: string) => {
+        try {
+            await deleteBeer(id);
+            setBeers((prev) => prev.filter((beer) => beer.id_beer !== id)); // Update the state
+        } catch (err) {
+            console.error('Error deleting beer:', err);
+            // setError('Failed to delete beer. Please try again.');
+        }
+    };
+
     return (
         <div>
             <h1>Beers</h1>
             <button style={styles.button} onClick={() => navigate('/beers/create')}>
                 Add New Beer
             </button>
-            <BeerList beers={beers}/>
+            <BeerList beers={beers} onDelete={handleDelete}/>
         </div>
     );
 };

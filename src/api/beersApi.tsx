@@ -30,6 +30,18 @@ export const createBeer = async (beerData: {
 //     return response.data;
 // };
 
+// Update a beer by ID
+export const updateBeer = async (id: string, beerData: Partial<{
+    id_brewery: string;
+    name: string;
+    description: string;
+    abv: number;
+    price: number;
+}>) => {
+    const response = await axiosClient.put(`/beers/${id}`, beerData);
+    return response.data;
+};
+
 // Delete a beer by ID
 export const deleteBeer = async (id: string) => {
     const response = await axiosClient.delete(`/beers/${id}`);

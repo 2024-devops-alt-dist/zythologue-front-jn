@@ -58,7 +58,7 @@ const BeerPage: React.FC = () => {
     );
 };
 
-const styles = {
+const styles : { [key: string]: React.CSSProperties } = {
     container: {
         padding: '20px',
         margin: '20px auto',

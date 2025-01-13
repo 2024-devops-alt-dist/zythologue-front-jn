@@ -5,6 +5,7 @@ import BeersPage from '../pages/BeersPage';
 import BreweriesPage from '../pages/BreweriesPage';
 import BeerPage from "../pages/BeerPage.tsx";
 import CreateBeerPage from '../pages/CreateBeerPage';
+import UpdateBeerPage from "../pages/UpdateBeerPage.tsx";
 
 const AppRoutes: React.FC = () => {
     return (
@@ -14,6 +15,7 @@ const AppRoutes: React.FC = () => {
                 <Route path="/beers" element={<BeersPage />} />
                 <Route path="/beers/:id" element={<BeerPage />} />
                 <Route path="/beers/create" element={<CreateBeerPage />} />
+                <Route path="/beers/edit/:id" element={<UpdateBeerPage />} />
                 <Route path="/breweries" element={<BreweriesPage />} />
             </Routes>
         </Router>

@@ -1,6 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 interface BeerCardProps {
+    id: string
     name: string;
     description: string;
     abv: number;
@@ -10,7 +12,7 @@ interface BeerCardProps {
     breweryCountry: string
 }
 
-const BeerCard: React.FC<BeerCardProps> = ({ name, description, abv, price, breweryName, breweryCountry }) => {
+const BeerCard: React.FC<BeerCardProps> = ({ id, name, description, abv, price, breweryName, breweryCountry }) => {
     return (
         <div style={styles.card}>
             <h2 style={styles.title}>{name}</h2>
@@ -26,6 +28,9 @@ const BeerCard: React.FC<BeerCardProps> = ({ name, description, abv, price, brew
             </p>
             <p style={styles.details}>
                 <strong>Country:</strong> {breweryCountry}
+            </p>
+            <p>
+                <Link to={`/beers/${id}`} style={styles.link}>More infos...</Link>
             </p>
         </div>
     );
@@ -45,6 +50,10 @@ const styles = {
         fontSize: '1.5rem',
         marginBottom: '8px',
         color: '#333',
+    },
+    link: {
+        textDecoration: 'none',
+        color: '#007bff',
     },
     description: {
         fontSize: '1rem',

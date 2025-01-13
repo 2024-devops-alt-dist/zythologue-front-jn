@@ -22,6 +22,7 @@ const BeerList: React.FC<BeerListProps> = ({ beers }) => {
             {beers.map((beer) => (
                 <BeerCard
                     key={beer.id_beer}
+                    id={beer.id_beer}
                     name={beer.name}
                     description={beer.description}
                     abv={beer.abv}

@@ -9,7 +9,10 @@ const BeersPage: React.FC = () => {
     const [filteredBeers, setFilteredBeers] = useState<any[]>([]);
     const [searchQuery, setSearchQuery] = useState<string>('');
     const [abvFilter, setAbvFilter] = useState<number | ''>('');
+    const [sortOption, setSortOption] = useState<string>('name');
     const navigate = useNavigate();
+
+
 
 
     useEffect(() => {
@@ -44,6 +47,8 @@ const BeersPage: React.FC = () => {
         setFilteredBeers(updatedBeers);
     }, [searchQuery, abvFilter, beers]);
 
+
+
     if (loading) {
         return <p>Loading beers...</p>;
     }
@@ -57,6 +62,23 @@ const BeersPage: React.FC = () => {
             // setError('Failed to delete beer. Please try again.');
         }
     };
+
+    const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        setSortOption(event.target.value);
+    };
+
+    // Sort beers based on the selected option
+    const sortedBeers = [...filteredBeers].sort((a, b) => {
+        if (sortOption === 'name') {
+            return a.name.localeCompare(b.name);
+        } else if (sortOption === 'abv') {
+            return a.abv - b.abv;
+        } else if (sortOption === 'price') {
+            return a.price - b.price; // Numerical sorting for ABV
+        }
+        return 0;
+    });
+
 
     return (
         <div>
@@ -86,7 +108,21 @@ const BeersPage: React.FC = () => {
             }}>
                 Clear Filters
             </button>
-            <BeerList beers={filteredBeers} onDelete={handleDelete}/>
+            {/* Sort Dropdown */}
+            <div className="mt-4">
+                <label htmlFor="sort" className="mr-2">Sort by:</label>
+                <select
+                    id="sort"
+                    value={sortOption}
+                    onChange={handleSortChange}
+                    className="border p-2 rounded"
+                >
+                    <option value="name">Name</option>
+                    <option value="abv">abv</option>
+                    <option value="price">price</option>
+                </select>
+            </div>
+            <BeerList beers={sortedBeers} onDelete={handleDelete}/>
         </div>
     );
 };

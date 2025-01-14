@@ -80,12 +80,18 @@ const BeersPage: React.FC = () => {
                     style={styles.input}
                 />
             </div>
+            <button style={styles.clearButton} onClick={() => {
+                setSearchQuery('');
+                setAbvFilter('');
+            }}>
+                Clear Filters
+            </button>
             <BeerList beers={filteredBeers} onDelete={handleDelete}/>
         </div>
     );
 };
 
-const styles : { [key: string]: React.CSSProperties } = {
+const styles: { [key: string]: React.CSSProperties } = {
     title: {
         textAlign: 'center',
         fontSize: '2rem',
@@ -111,6 +117,14 @@ const styles : { [key: string]: React.CSSProperties } = {
         fontSize: '1rem',
         borderRadius: '4px',
         border: '1px solid #ccc',
+    },
+    clearButton: {
+        padding: '8px 12px',
+        backgroundColor: '#dc3545',
+        color: '#fff',
+        border: 'none',
+        borderRadius: '4px',
+        cursor: 'pointer',
     },
 };
 

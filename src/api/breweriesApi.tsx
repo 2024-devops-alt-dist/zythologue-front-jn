@@ -12,6 +12,17 @@ export const getBreweryById = async (id: string) => {
     return response.data;
 };
 
+export const getBeersByBrewery = async (id: string) => {
+    try {
+        const response = await axiosClient.get(`/breweries/${id}/beers`);
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching beers:', error);
+        throw error;
+    }
+};
+
+
 // Create a new brewery
 export const createBrewery = async (breweryData: { name: string; country: string }) => {
     const response = await axiosClient.post('/breweries', breweryData);

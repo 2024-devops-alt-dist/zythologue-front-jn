@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getBreweries } from '../api/breweriesApi';
+import {Link} from "react-router-dom";
 
 const BreweriesPage: React.FC = () => {
     const [breweries, setBreweries] = useState<any[]>([]);
@@ -25,6 +26,9 @@ const BreweriesPage: React.FC = () => {
                     <li key={brewery.id_brewery}>
                         <h2>{brewery.name}</h2>
                         <p>{brewery.country}</p>
+                        <Link to={`/brewery/${brewery.id_brewery}`}>
+                            <p>More infos</p>
+                        </Link>
                     </li>
                 ))}
             </ul>

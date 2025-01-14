@@ -10,10 +10,8 @@ const BeersPage: React.FC = () => {
     const [searchQuery, setSearchQuery] = useState<string>('');
     const [abvFilter, setAbvFilter] = useState<number | ''>('');
     const [sortOption, setSortOption] = useState<string>('name');
+    const [isAscending, setIsAscending] = useState<boolean>(true);
     const navigate = useNavigate();
-
-
-
 
     useEffect(() => {
         const fetchBeers = async () => {
@@ -30,10 +28,8 @@ const BeersPage: React.FC = () => {
 
         fetchBeers();
     }, []);
-
     useEffect(() => {
         let updatedBeers = beers;
-
         if (searchQuery) {
             updatedBeers = updatedBeers.filter((beer) =>
                 beer.name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -47,12 +43,9 @@ const BeersPage: React.FC = () => {
         setFilteredBeers(updatedBeers);
     }, [searchQuery, abvFilter, beers]);
 
-
-
     if (loading) {
         return <p>Loading beers...</p>;
     }
-
     const handleDelete = async (id: string) => {
         try {
             await deleteBeer(id);
@@ -62,23 +55,23 @@ const BeersPage: React.FC = () => {
             // setError('Failed to delete beer. Please try again.');
         }
     };
-
     const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setSortOption(event.target.value);
     };
-
-    // Sort beers based on the selected option
+    const toggleSortOrder = () => {
+        setIsAscending((prev) => !prev);
+    };
     const sortedBeers = [...filteredBeers].sort((a, b) => {
+        let comparison = 0;
         if (sortOption === 'name') {
-            return a.name.localeCompare(b.name);
+            comparison = a.name.localeCompare(b.name);
         } else if (sortOption === 'abv') {
-            return a.abv - b.abv;
+            comparison = a.abv - b.abv;
         } else if (sortOption === 'price') {
-            return a.price - b.price; // Numerical sorting for ABV
+            comparison = a.price - b.price; // Numerical sorting for ABV
         }
-        return 0;
+        return isAscending ? comparison : -comparison;
     });
-
 
     return (
         <div>
@@ -122,6 +115,12 @@ const BeersPage: React.FC = () => {
                     <option value="price">price</option>
                 </select>
             </div>
+            <button
+                onClick={toggleSortOrder}
+                className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+            >
+                {isAscending ? 'Ascending' : 'Descending'}
+            </button>
             <BeerList beers={sortedBeers} onDelete={handleDelete}/>
         </div>
     );

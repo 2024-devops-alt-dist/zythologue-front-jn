@@ -10,7 +10,7 @@ interface SortingProps {
 
 const Sorting: React.FC<SortingProps> = ({ sortOption, isAscending, onSortChange, onToggleOrder }) => {
     return (
-        <div style={{ marginTop: '16px' }}>
+        <div>
             <label htmlFor="sort" style={{ marginRight: '8px' }}>Sort by:</label>
             <select
                 id="sort"

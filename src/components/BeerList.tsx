@@ -39,12 +39,12 @@ const BeerList: React.FC<BeerListProps> = ({ beers, onDelete }) => {
     );
 };
 
-const styles = {
+const styles : { [key: string]: React.CSSProperties } = {
     wrapper: {
         display: 'flex',
-        // flexWrap: 'wrap',
+        flexWrap: 'wrap',
         gap: '16px',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
     },
 };
 

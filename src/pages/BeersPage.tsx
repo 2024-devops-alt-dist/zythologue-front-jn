@@ -39,28 +39,37 @@ const BeersPage: React.FC = () => {
     return (
         <div>
             <h1>Beers</h1>
-            <button onClick={() => navigate('/beers/create')} style={{ marginBottom: '16px' }}>
-                Add New Beer
-            </button>
-            <Filters
-                searchQuery={searchQuery}
-                abvFilter={abvFilter}
-                onSearchChange={setSearchQuery}
-                onAbvChange={setAbvFilter}
-                onClear={() => {
-                    setSearchQuery('');
-                    setAbvFilter('');
-                }}
-            />
-            <Sorting
-                sortOption={sortOption}
-                isAscending={isAscending}
-                onSortChange={setSortOption}
-                onToggleOrder={() => setIsAscending((prev) => !prev)}
-            />
+            <div style={styles.filterAndSort}>
+                <button onClick={() => navigate('/beers/create')} style={{ marginBottom: '16px' }}>
+                    Add New Beer
+                </button>
+                <Filters
+                    searchQuery={searchQuery}
+                    abvFilter={abvFilter}
+                    onSearchChange={setSearchQuery}
+                    onAbvChange={setAbvFilter}
+                    onClear={() => {
+                        setSearchQuery('');
+                        setAbvFilter('');
+                    }}
+                />
+                <Sorting
+                    sortOption={sortOption}
+                    isAscending={isAscending}
+                    onSortChange={setSortOption}
+                    onToggleOrder={() => setIsAscending((prev) => !prev)}
+                />
+            </div>
             <BeerList beers={sortedBeers} onDelete={handleDelete} />
         </div>
     );
+};
+
+const styles : { [key: string]: React.CSSProperties } = {
+    filterAndSort: {
+        display: 'flex',
+        gap: '20px'
+    },
 };
 
 export default BeersPage;

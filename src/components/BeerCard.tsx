@@ -48,13 +48,17 @@ const BeerCard: React.FC<BeerCardProps> = ({ id, name, description, abv, price, 
 
 const styles: { [key: string]: React.CSSProperties } = {
     card: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
         border: '1px solid #ddd',
         borderRadius: '8px',
         padding: '16px',
-        margin: '8px',
+        margin: '0',
         boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
         backgroundColor: '#fff',
-        maxWidth: '300px',
+        width: '250px',
+        height: '403px'
     },
     title: {
         fontSize: '1.5rem',

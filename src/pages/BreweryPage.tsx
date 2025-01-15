@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import {getBeersByBrewery, getBreweryById} from '../api/breweriesApi';
 import BeerList from "../components/BeerList.tsx";
 import {deleteBeer} from "../api/beersApi.tsx";
+import {useFavorites} from "../hooks/useFavorites.ts";
 
 interface Brewery {
     id: string;
@@ -38,6 +39,8 @@ const BreweryPage: React.FC = () => {
         }
     };
 
+    const { favorites, handleToggleFavorite } = useFavorites();
+
     useEffect(() => {
         const fetchBrewery = async () => {
             try {
@@ -65,7 +68,12 @@ const BreweryPage: React.FC = () => {
         <div>
             <h1 className="text-3xl font-bold">{brewery.name}</h1>
             <p><strong>Country:</strong> {brewery.country}</p>
-            <BeerList beers={beers} onDelete={handleDelete}/>
+            <BeerList
+                beers={beers}
+                onDelete={handleDelete}
+                favorites={favorites}
+                onToggleFavorite={handleToggleFavorite}
+            />
         </div>
     );
 };

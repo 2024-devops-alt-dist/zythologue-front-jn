@@ -1,66 +1,28 @@
-import React, { useEffect, useState } from 'react';
-import { getBeers, deleteBeer } from '../api/beersApi';
+import React from 'react';
+import { useBeers } from '../hooks/useBeers';
+import { useFavorites } from '../hooks/useFavorites';
+import { useNavigate } from 'react-router-dom';
 import BeerList from '../components/BeerList';
 import Filters from '../components/Filters';
 import Sorting from '../components/Sorting';
-import { filterBeers, sortBeers } from '../utils/beersUtils';
-import { useNavigate } from 'react-router-dom';
-
-const FAVORITES_KEY = 'favoriteBeers'; // Key for localStorage
 
 const BeersPage: React.FC = () => {
-    const [beers, setBeers] = useState<any[]>([]);
-    const [filteredBeers, setFilteredBeers] = useState<any[]>([]);
-    const [searchQuery, setSearchQuery] = useState<string>('');
-    const [abvFilter, setAbvFilter] = useState<number | ''>('');
-    const [sortOption, setSortOption] = useState<string>('name');
-    const [isAscending, setIsAscending] = useState<boolean>(true);
-    const [favorites, setFavorites] = useState<string[]>([]); // List of favorite beer IDs
     const navigate = useNavigate();
 
-    useEffect(() => {
-        const fetchBeers = async () => {
-            const data = await getBeers();
-            setBeers(data);
-            setFilteredBeers(data);
-            localStorage.setItem('all_beers', JSON.stringify(data)); // Save all beers locally
-            // Load favorites from localStorage
-            const savedFavorites = localStorage.getItem(FAVORITES_KEY);
-            if (savedFavorites) {
-                setFavorites(JSON.parse(savedFavorites));
-            }
-        };
-        fetchBeers();
-    }, []);
+    const {
+        beers,
+        searchQuery,
+        abvFilter,
+        sortOption,
+        isAscending,
+        setSearchQuery,
+        setAbvFilter,
+        setSortOption,
+        setIsAscending,
+        handleDelete,
+    } = useBeers();
 
-    useEffect(() => {
-        const filtered = filterBeers(beers, searchQuery, abvFilter);
-        setFilteredBeers(filtered);
-    }, [searchQuery, abvFilter, beers]);
-
-    // Handle toggling a beer as a favorite
-    const handleToggleFavorite = (id: string) => {
-        const isAlreadyFavorite = favorites.includes(id);
-
-        let updatedFavorites;
-        if (isAlreadyFavorite) {
-            // Remove from favorites
-            updatedFavorites = favorites.filter((favId) => favId !== id);
-        } else {
-            // Add to favorites
-            updatedFavorites = [...favorites, id];
-        }
-
-        setFavorites(updatedFavorites);
-        localStorage.setItem(FAVORITES_KEY, JSON.stringify(updatedFavorites)); // Save to localStorage
-    };
-
-    const handleDelete = async (id: string) => {
-        await deleteBeer(id);
-        setBeers((prev) => prev.filter((beer) => beer.id_beer !== id));
-    };
-
-    const sortedBeers = sortBeers(filteredBeers, sortOption, isAscending);
+    const { favorites, handleToggleFavorite } = useFavorites();
 
     return (
         <div>
@@ -87,7 +49,7 @@ const BeersPage: React.FC = () => {
                 />
             </div>
             <BeerList
-                beers={sortedBeers}
+                beers={beers}
                 onDelete={handleDelete}
                 favorites={favorites}
                 onToggleFavorite={handleToggleFavorite}
@@ -96,10 +58,10 @@ const BeersPage: React.FC = () => {
     );
 };
 
-const styles : { [key: string]: React.CSSProperties } = {
+const styles: { [key: string]: React.CSSProperties } = {
     filterAndSort: {
         display: 'flex',
-        gap: '20px'
+        gap: '20px',
     },
 };
 

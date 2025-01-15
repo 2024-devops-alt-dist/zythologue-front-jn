@@ -11,6 +11,7 @@ const BeersPage: React.FC = () => {
 
     const {
         beers,
+        suggestions,
         searchQuery,
         abvFilter,
         sortOption,
@@ -34,6 +35,7 @@ const BeersPage: React.FC = () => {
                 <Filters
                     searchQuery={searchQuery}
                     abvFilter={abvFilter}
+                    suggestions={suggestions}
                     onSearchChange={setSearchQuery}
                     onAbvChange={setAbvFilter}
                     onClear={() => {

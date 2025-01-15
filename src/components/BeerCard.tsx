@@ -11,9 +11,22 @@ interface BeerCardProps {
     breweryName: string;
     breweryCountry: string;
     onDelete: (id: string) => void;
+    isFavorite: boolean; // Whether the beer is a favorite
+    onToggleFavorite: (id: string) => void; // Function to toggle favorite status
 }
 
-const BeerCard: React.FC<BeerCardProps> = ({ id, name, description, abv, price, breweryName, breweryCountry, onDelete }) => {
+const BeerCard: React.FC<BeerCardProps> = ({
+                                               id,
+                                               name,
+                                               description,
+                                               abv,
+                                               price,
+                                               breweryName,
+                                               breweryCountry,
+                                               onDelete,
+                                               isFavorite,
+                                               onToggleFavorite,
+}) => {
     const navigate = useNavigate();
     return (
         <div style={styles.card}>
@@ -35,11 +48,17 @@ const BeerCard: React.FC<BeerCardProps> = ({ id, name, description, abv, price, 
                 <Link to={`/beers/${id}`} style={styles.link}>More infos...</Link>
             </p>
             <div style={styles.actions}>
-                <button style={styles.editButton} onClick={() =>navigate(`/beers/edit/${id}`)}>
+                <button style={styles.editButton} onClick={() => navigate(`/beers/edit/${id}`)}>
                     Edit
                 </button>
                 <button style={styles.deleteButton} onClick={() => onDelete(id)}>
                     Delete
+                </button>
+                <button
+                    style={isFavorite ? styles.favoriteButtonActive : styles.favoriteButton}
+                    onClick={() => onToggleFavorite(id)}
+                >
+                    {isFavorite ? 'Unfavorite' : 'Favorite'}
                 </button>
             </div>
         </div>
@@ -92,6 +111,24 @@ const styles: { [key: string]: React.CSSProperties } = {
         cursor: 'pointer',
     },
     deleteButton: {
+        backgroundColor: '#dc3545',
+        color: '#fff',
+        padding: '8px 12px',
+        border: 'none',
+        borderRadius: '4px',
+        cursor: 'pointer',
+    },
+    favoriteButton: {
+        marginTop: '16px',
+        backgroundColor: '#007bff',
+        color: '#fff',
+        padding: '8px 12px',
+        border: 'none',
+        borderRadius: '4px',
+        cursor: 'pointer',
+    },
+    favoriteButtonActive: {
+        marginTop: '16px',
         backgroundColor: '#dc3545',
         color: '#fff',
         padding: '8px 12px',

@@ -16,9 +16,11 @@ interface Beer {
 interface BeerListProps {
     beers: Beer[]
     onDelete: (id: string) => void;
+    favorites: string[]; // List of favorite beer IDs
+    onToggleFavorite: (id: string) => void;
 }
 
-const BeerList: React.FC<BeerListProps> = ({ beers, onDelete }) => {
+const BeerList: React.FC<BeerListProps> = ({ beers, onDelete, favorites, onToggleFavorite }) => {
     return (
         <div style={styles.wrapper}>
             {beers.map((beer) => (
@@ -33,6 +35,8 @@ const BeerList: React.FC<BeerListProps> = ({ beers, onDelete }) => {
                     breweryName={beer.brewery_name}
                     breweryCountry={beer.brewery_country}
                     onDelete={onDelete}
+                    isFavorite={favorites.includes(beer.id_beer)} // Check if beer is a favorite
+                    onToggleFavorite={onToggleFavorite}
                 />
             ))}
         </div>

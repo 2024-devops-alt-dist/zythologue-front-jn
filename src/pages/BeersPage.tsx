@@ -6,6 +6,8 @@ import Sorting from '../components/Sorting';
 import { filterBeers, sortBeers } from '../utils/beersUtils';
 import { useNavigate } from 'react-router-dom';
 
+const FAVORITES_KEY = 'favoriteBeers'; // Key for localStorage
+
 const BeersPage: React.FC = () => {
     const [beers, setBeers] = useState<any[]>([]);
     const [filteredBeers, setFilteredBeers] = useState<any[]>([]);
@@ -13,6 +15,7 @@ const BeersPage: React.FC = () => {
     const [abvFilter, setAbvFilter] = useState<number | ''>('');
     const [sortOption, setSortOption] = useState<string>('name');
     const [isAscending, setIsAscending] = useState<boolean>(true);
+    const [favorites, setFavorites] = useState<string[]>([]); // List of favorite beer IDs
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -20,6 +23,12 @@ const BeersPage: React.FC = () => {
             const data = await getBeers();
             setBeers(data);
             setFilteredBeers(data);
+            localStorage.setItem('all_beers', JSON.stringify(data)); // Save all beers locally
+            // Load favorites from localStorage
+            const savedFavorites = localStorage.getItem(FAVORITES_KEY);
+            if (savedFavorites) {
+                setFavorites(JSON.parse(savedFavorites));
+            }
         };
         fetchBeers();
     }, []);
@@ -28,6 +37,23 @@ const BeersPage: React.FC = () => {
         const filtered = filterBeers(beers, searchQuery, abvFilter);
         setFilteredBeers(filtered);
     }, [searchQuery, abvFilter, beers]);
+
+    // Handle toggling a beer as a favorite
+    const handleToggleFavorite = (id: string) => {
+        const isAlreadyFavorite = favorites.includes(id);
+
+        let updatedFavorites;
+        if (isAlreadyFavorite) {
+            // Remove from favorites
+            updatedFavorites = favorites.filter((favId) => favId !== id);
+        } else {
+            // Add to favorites
+            updatedFavorites = [...favorites, id];
+        }
+
+        setFavorites(updatedFavorites);
+        localStorage.setItem(FAVORITES_KEY, JSON.stringify(updatedFavorites)); // Save to localStorage
+    };
 
     const handleDelete = async (id: string) => {
         await deleteBeer(id);
@@ -60,7 +86,12 @@ const BeersPage: React.FC = () => {
                     onToggleOrder={() => setIsAscending((prev) => !prev)}
                 />
             </div>
-            <BeerList beers={sortedBeers} onDelete={handleDelete} />
+            <BeerList
+                beers={sortedBeers}
+                onDelete={handleDelete}
+                favorites={favorites}
+                onToggleFavorite={handleToggleFavorite}
+            />
         </div>
     );
 };

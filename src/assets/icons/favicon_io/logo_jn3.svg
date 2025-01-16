@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="156.6476mm"
+   height="186.85594mm"
+   viewBox="0 0 156.64759 186.85594"
+   version="1.1"
+   id="svg17611"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
+   sodipodi:docname="logo_jn3.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview17613"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.79167324"
+     inkscape:cx="277.89243"
+     inkscape:cy="297.47121"
+     inkscape:window-width="1920"
+     inkscape:window-height="991"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs17608">
+    <rect
+       x="221.99083"
+       y="201.04829"
+       width="335.08051"
+       height="124.25902"
+       id="rect20678" />
+    <rect
+       x="156.3709"
+       y="389.53107"
+       width="371.38089"
+       height="538.92114"
+       id="rect20672" />
+    <rect
+       x="466.32037"
+       y="343.45752"
+       width="276.44141"
+       height="654.80316"
+       id="rect20615" />
+    <rect
+       x="114.48584"
+       y="517.97864"
+       width="279.23376"
+       height="395.11575"
+       id="rect19045" />
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 38.355932 : 1"
+       inkscape:vp_y="0 : 999.99997 : 0"
+       inkscape:vp_z="210 : 38.355932 : 1"
+       inkscape:persp3d-origin="105.00001 : -11.144062 : 1"
+       id="perspective18532" />
+    <rect
+       x="221.99083"
+       y="201.04829"
+       width="335.08051"
+       height="124.25902"
+       id="rect20686" />
+    <rect
+       x="221.99083"
+       y="201.04829"
+       width="335.08051"
+       height="124.25902"
+       id="rect20704" />
+  </defs>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-22.551967,-15.152841)">
+    <path
+       id="path24168"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:158.541px;line-height:1.25;font-family:'Century Gothic';-inkscape-font-specification:'Century Gothic';stroke:#000000;stroke-width:5.2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="m 25.151967,130.21936 19.930567,21.41368 V 61.856092 L 172.27167,198.46584 h 4.3279 V 76.354432 L 157.58626,55.926222 V 156.08238 L 29.347577,17.752841 h -4.19561 z" />
+    <text
+       xml:space="preserve"
+       transform="scale(0.26458333)"
+       id="text20613"
+       style="font-size:40px;line-height:1.25;font-family:Arial;-inkscape-font-specification:Arial;white-space:pre;shape-inside:url(#rect20615)" />
+    <path
+       id="path21801"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:158.541px;line-height:1.25;font-family:'Century Gothic';-inkscape-font-specification:'Century Gothic';stroke:#000000;stroke-width:5.2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+       d="m 58.508876,166.73589 30.00355,32.23587 c 2.38957,0.28028 4.78693,0.43702 7.19365,0.43702 10.095804,0 18.694704,-2.12425 25.795994,-6.37271 7.10128,-4.32862 12.14905,-10.0601 15.14357,-17.19429 3.08007,-7.21437 4.62052,-19.99995 4.62052,-38.35648 V 38.445058 l -18.94729,-20.35785 h -0.0464 V 136.8841 c 0,14.50888 -0.89832,24.28843 -2.69503,29.33851 -1.71115,5.05004 -4.79122,9.09815 -9.24022,12.1442 -4.36344,3.04607 -9.24097,4.56912 -14.631104,4.56912 -4.10677,0 -8.29837,-0.88178 -12.57625,-2.64527 -6.50238,-2.64528 -14.6732,-7.21444 -24.51233,-13.70734 z" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.1;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+       d="M -270.51787,-13.519856 -39.819824,234.35015"
+       id="path24166"
+       inkscape:transform-center-x="46.643809"
+       inkscape:transform-center-y="-33.010119" />
+  </g>
+</svg>

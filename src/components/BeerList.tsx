@@ -22,7 +22,7 @@ interface BeerListProps {
 
 const BeerList: React.FC<BeerListProps> = ({ beers, onDelete, favorites, onToggleFavorite }) => {
     return (
-        <div style={styles.wrapper}>
+        <div className='wrapper'>
             {beers.map((beer) => (
                 <BeerCard
                     key={beer.id_beer}
@@ -43,13 +43,5 @@ const BeerList: React.FC<BeerListProps> = ({ beers, onDelete, favorites, onToggl
     );
 };
 
-const styles : { [key: string]: React.CSSProperties } = {
-    wrapper: {
-        display: 'flex',
-        flexWrap: 'wrap',
-        gap: '16px',
-        justifyContent: 'space-between',
-    },
-};
 
 export default BeerList;

@@ -26,10 +26,10 @@ const BeersPage: React.FC = () => {
     const { favorites, handleToggleFavorite } = useFavorites();
 
     return (
-        <div>
+        <div className='main'>
             <h1>Beers</h1>
-            <div style={styles.filterAndSort}>
-                <button onClick={() => navigate('/beers/create')} style={{ marginBottom: '16px' }}>
+            <div className='filterAndSort'>
+                <button onClick={() => navigate('/beers/create')}>
                     Add New Beer
                 </button>
                 <Filters
@@ -58,13 +58,6 @@ const BeersPage: React.FC = () => {
             />
         </div>
     );
-};
-
-const styles: { [key: string]: React.CSSProperties } = {
-    filterAndSort: {
-        display: 'flex',
-        gap: '20px',
-    },
 };
 
 export default BeersPage;

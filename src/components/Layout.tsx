@@ -3,7 +3,7 @@ import Navbar from "./Navbar.tsx";
 
 export default function Layout() {
     return (
-        <div>
+        <div className={'layout'}>
             <Navbar />
             <main >
                 <Outlet />

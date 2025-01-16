@@ -45,7 +45,7 @@ const CustomCarousel: React.FC<CarouselProps> = ({ items, renderItem, style, vis
                         key={index}
                         style={{
                             ...defaultStyle.item,
-                            width: `${100 / visibleItems}%`, // Divide space equally
+                            width: `${90 / visibleItems}%`, // Divide space equally
                         }}
                     >
                         {renderItem(item)}
@@ -66,7 +66,7 @@ const defaultStyle : { [key: string]: React.CSSProperties } = {
         gap: '40px',
         overflow: 'hidden',
         position: 'relative',
-        width: '110%',
+        width: '100vw',
         // maxWidth: '1000px',
         // margin: '0 auto',
     },
@@ -82,7 +82,7 @@ const defaultStyle : { [key: string]: React.CSSProperties } = {
         // border: '1px solid #ddd',
         // borderRadius: '8px',
         background: '#fff',
-        margin: '0 5px',
+        // margin: '0 5px',
     },
     navButton: {
         backgroundColor: '#007bff',

@@ -53,6 +53,7 @@ export const useBeers = () => {
         abvFilter,
         sortOption,
         isAscending,
+        setBeers,
         setSearchQuery,
         setAbvFilter,
         setSortOption,

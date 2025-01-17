@@ -49,11 +49,9 @@ const HomePage: React.FC = () => {
                         breweryName={beer.brewery_name}
                         breweryCountry={beer.brewery_country}
                         onDelete={()=>''}
+                        isFavorite={false}
+                        onToggleFavorite={()=>''}
                     />
-                    // <div style={{ textAlign: 'center' }}>
-                    //     <h3>{beer.name}</h3>
-                    //     <p>ABV: {beer.abv}%</p>
-                    // </div>
                 )}
                 style={{ margin: '20px auto' }}
                 visibleItems={3}

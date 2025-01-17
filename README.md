@@ -1,194 +1,108 @@
-# React + TypeScript + Vite
+# 🍺 Designing User Interfaces for Craft Beer Exploration
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Project Overview
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
-
-# Beers and Breweries Project
-
-This is a web application built with **React** (using TypeScript) that displays data about beers and breweries. The project leverages a backend built with **PostgreSQL** and **Express** for API services, and Axios is used for fetching data.
+This application is an intuitive and visually appealing user interface for craft beer enthusiasts. It allows users to explore a **catalog of craft beers** and view details about the breweries that produce them. Built with **React.js** and **TypeScript**, the app interacts seamlessly with a REST API to provide a smooth and user-friendly experience.
 
 ---
 
-## Features
+## 🌟 Main Features
 
-### General Features:
-- **Brewery List**: View all breweries with their details.
-- **Brewery Details**: View a specific brewery's information and its related beers.
-- **Beer List**: Display all beers with filters, sorting, and search capabilities.
-- **Beer Management**: Add, update, and delete beers directly from the application.
+### 1. **Craft Beer Catalog**
+- A page displaying all the available craft beers in a grid.
+- Quick information about each beer, including:
+    - **Name**
+    - **Description**
+    - **Abv**
+    - **Price**
+    - **Brewery Name**
+    - **Location**
 
-### Filtering and Sorting:
-- **Filters**:
-    - Search beers by name.
-    - Filter beers by a minimum ABV (Alcohol By Volume).
-- **Sorting**:
-    - Sort beers by name, ABV, or price.
-    - Toggle between ascending and descending order.
+[//]: # (    - **Image**)
+- Detailed beer pages with comprehensive information:
+    - Description
+    - Alcohol by Volume (ABV)
+    - Price
 
-### Clean Code and Modularity:
-- Separate utility functions for filtering and sorting.
-- Reusable components for filters and sorting.
-- API calls are centralized in an `api` folder for maintainability.
+### 2. **Brewery Directory**
+- A dedicated page listing all breweries with their main details (name, location).
+- The ability to view beers produced by a specific brewery.
+
+### 3. **Beer Details Page**
+- A detailed beer page with complete information about a beer:
+    - Name
+    - Brewery information
+    - Alcohol by Volume (ABV)
+    - Price
+    - Description
+    - Options to edit or delete a beer
+
+### 4. **Brewery-Specific Beer List**
+- A page dedicated to showing all beers associated with a specific brewery.
+- Additional information about the brewery.
+
+### 5. **Advanced Search and Filters**
+- A dynamic search bar with autocomplete suggestions to quickly find a specific beer.
+- Filters by name, price, alcohol content, and sorting
+
+### 6. **Favorites**
+- A dedicated page where users can view and manage their favorite beers.
 
 ---
 
-## Technology Stack
+## 🛠️ Technologies Used
 
-### Frontend:
-- **React** with **TypeScript**
-- **Axios** for HTTP requests
-- **React Router** for navigation
-
-### Backend:
-- **Express** for API endpoints
-- **PostgreSQL** for database management
+- **React.js + TypeScript**: Built with modern functional components and hooks.
+- **React Router**: For navigation between pages.
+- **Context API**: To manage global state (like beers, favorites, etc.).
+- **Axios**: For REST API calls.
+- **CSS**: Fully responsive and styled for an elegant, mobile-first design.
+- **Responsive Design**: Ensures the application works smoothly across all screen sizes.
 
 ---
 
-## Installation and Setup
+## 🚀 Features Implemented
 
-### Prerequisites
-Ensure you have the following installed:
-- Node.js
-- PostgreSQL
+- View a catalog of craft beers with detailed pages for each beer.
+- List all breweries and view beers by a specific brewery.
+- Search for beers dynamically and filter results.
+- **Bonus**:
+    - Add, update, or delete beers via a modal.
+    - Mark beers as favorites and manage them on a dedicated page.
 
-### Steps to Run the Project
+---
 
-1. **Clone the Repository**:
+## 🌐 How to Run the Project
+
+
+
+### Prerequisites:
+1. You have to clone and run this projects related to the PostgreSQL database and the Api:
+
+    [zythologue-api-jn](https://github.com/2024-devops-alt-dist/zythologue-api-jn)
+
+    [zythologue-jn](https://github.com/2024-devops-alt-dist/zythologue-jn)
+
+2. Ensure you have **Node.js** and **npm** installed.
+3. Clone the repository:
    ```bash
-   git clone https://github.com/your-repo/beers-and-breweries.git
-   cd beers-and-breweries
+   git clone git@github.com:2024-devops-alt-dist/zythologue-front-jn.git
    ```
-
-2. **Install Dependencies**:
-   ```bash
-   npm install
-   ```
-
-3. **Setup Environment Variables**:
-   Create a `.env` file in the root directory and configure the following:
-   ```env
-   REACT_APP_API_URL=http://localhost:5000
-   DATABASE_URL=your_postgresql_connection_string
-   ```
-
-4. **Run the Backend**:
-   Navigate to the backend folder and start the server:
-   ```bash
-   cd backend
-   npm install
-   npm run dev
-   ```
-
-5. **Run the Frontend**:
-   Start the React application:
-   ```bash
-   npm start
-   ```
-
-6. Open the application in your browser:
-   ```
-   http://localhost:3000
-   ```
-
----
-
-## Folder Structure
-
-```plaintext
-├── src
-│   ├── api
-│   │   └── beersApi.ts
-│   ├── components
-│   │   ├── BeerList.tsx
-│   │   ├── Filters.tsx
-│   │   └── Sorting.tsx
-│   ├── pages
-│   │   ├── BeersPage.tsx
-│   │   └── BreweryDetailPage.tsx
-│   ├── utils
-│   │   └── beersUtils.ts
-│   └── App.tsx
-├── public
-│   └── index.html
-└── package.json
-```
-
----
-
-## API Endpoints
-
-### Backend Endpoints
-- **GET /api/beers**: Fetch all beers
-- **GET /api/breweries**: Fetch all breweries
-- **GET /api/breweries/:id**: Fetch details for a specific brewery
-- **GET /api/breweries/:id/beers**: Fetch beers for a specific brewery
-- **POST /api/beers**: Add a new beer
-- **PUT /api/beers/:id**: Update an existing beer
-- **DELETE /api/beers/:id**: Delete a beer
-
----
-
-## Future Improvements
-- Add authentication for managing beers and breweries.
-- Enhance UI with better styling and responsiveness.
-- Implement pagination for beer and brewery lists.
-- Add analytics to track user interactions.
-
----
-
-## Contributing
-Contributions are welcome! Feel free to open a pull request or submit issues.
-
----
-
-## License
-This project is licensed under the MIT License.
-
-
+4. Navigate to the project directory:
+    ```bash
+    cd zythologue-front-jn
+    ```
+   
+### Steps to Run:
+1. Install the dependencies:
+    ```bash
+    npm install
+    ```
+2. Run in dev mode
+    ```bash
+    npm run dev
+    ```
+3.	Open your browser and go to:
+    ```
+    http://localhost:5173/
+    ```

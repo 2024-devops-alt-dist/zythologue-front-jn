@@ -6,6 +6,50 @@ This application is an intuitive and visually appealing user interface for craft
 
 ---
 
+## 🌐 How to Run the Project
+
+### Prerequisites:
+1. Ensure you have **Node.js** and **npm** installed and ensure you have docker is running and an ssh key configure on your github account (if you have a passphrase you will need to enter it 3 times)
+
+2. Clone the repository:
+   ```bash
+   git clone git@github.com:2024-devops-alt-dist/zythologue-front-jn.git
+   ```
+3. Navigate to the project directory:
+    ```bash
+    cd zythologue-front-jn
+    ```
+4. Launch the setup.sh file
+    ```bash
+    ./setup.sh
+    ```
+5.	Open your browser and go to:
+    ```
+    http://localhost:5173/
+    ```
+---
+### Alternative way using https (not recommended):
+1. Ensure you have **Node.js** and **npm** installed and ensure you have docker is running.
+
+2. Clone the repository:
+   ```bash
+   git clone https://github.com/2024-devops-alt-dist/zythologue-front-jn.git
+   ```
+3. Navigate to the project directory:
+    ```bash
+    cd zythologue-front-jn
+    ```
+4. Launch the setup.sh file
+    ```bash
+    ./setupHttps.sh
+    ```
+5.	Open your browser and go to:
+    ```
+    http://localhost:5173/
+    ```
+
+
+
 ## 🌟 Main Features
 
 ### 1. **Craft Beer Catalog**
@@ -71,27 +115,3 @@ This application is an intuitive and visually appealing user interface for craft
     - Mark beers as favorites and manage them on a dedicated page.
 
 ---
-
-## 🌐 How to Run the Project
-
-
-
-### Prerequisites:
-1. Ensure you have **Node.js** and **npm** installed and ensure you have docker is running and an ssh key configure on your github account (if you have a passphrase you will need to enter it 3 times)
-
-2. Clone the repository:
-   ```bash
-   git clone git@github.com:2024-devops-alt-dist/zythologue-front-jn.git
-   ```
-3. Navigate to the project directory:
-    ```bash
-    cd zythologue-front-jn
-    ```
-4. Launch the setup.sh file
-    ```bash
-    ./setup.sh
-    ```
-5.	Open your browser and go to:
-    ```
-    http://localhost:5173/
-    ```

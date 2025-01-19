@@ -77,32 +77,21 @@ This application is an intuitive and visually appealing user interface for craft
 
 
 ### Prerequisites:
-1. You have to clone and run this projects related to the PostgreSQL database and the Api:
+1. Ensure you have **Node.js** and **npm** installed and ensure you have docker is running and an ssh key configure on your github account (if you have a passphrase you will need to enter it 3 times)
 
-    [zythologue-api-jn](https://github.com/2024-devops-alt-dist/zythologue-api-jn)
-
-    [zythologue-jn](https://github.com/2024-devops-alt-dist/zythologue-jn)
-
-2. Ensure you have **Node.js** and **npm** installed.
-3. Clone the repository:
+2. Clone the repository:
    ```bash
    git clone git@github.com:2024-devops-alt-dist/zythologue-front-jn.git
    ```
-4. Navigate to the project directory:
+3. Navigate to the project directory:
     ```bash
     cd zythologue-front-jn
     ```
-   
-### Steps to Run:
-1. Install the dependencies:
+4. Launch the setup.sh file
     ```bash
-    npm install
+    ./setup.sh
     ```
-2. Run in dev mode
-    ```bash
-    npm run dev
-    ```
-3.	Open your browser and go to:
+5.	Open your browser and go to:
     ```
     http://localhost:5173/
     ```

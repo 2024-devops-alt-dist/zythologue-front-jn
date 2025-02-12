@@ -23,11 +23,14 @@ docker run -d --name zythologue-api-jn --network=zythologue-jn_simplon-local --e
 cd "$BASE_DIR" || exit
 rm -rf zythologue-api-jn
 
-# Set up the front-end project
-echo "Installing dependencies for the front-end project..."
-npm install
-echo "Starting the front-end project in detached mode..."
-nohup npm run dev > frontend.log 2>&1 &
+## Set up the front-end project
+#echo "Installing dependencies for the front-end project..."
+#npm install
+#echo "Starting the front-end project in detached mode..."
+#nohup npm run dev > frontend.log 2>&1 &
+
+docker build -t zythologue-front-jn .
+docker run -d -p 80:80 zythologue-front-jn
 # Final message
 cat << "EOF"
 ░▒▓████████▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓████████▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░▒▓█▓▒░      ░▒▓██████▓▒░ ░▒▓██████▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓████████▓▒░
@@ -38,4 +41,4 @@ cat << "EOF"
 ░▒▓█▓▒░         ░▒▓█▓▒░      ░▒▓█▓▒░   ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░     ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░
 ░▒▓████████▓▒░  ░▒▓█▓▒░      ░▒▓█▓▒░   ░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░▒▓████████▓▒░▒▓██████▓▒░ ░▒▓██████▓▒░ ░▒▓██████▓▒░░▒▓████████▓▒░
 EOF
-echo "All projects are set up. Open your browser and go to http://localhost:5173/"
+echo "All projects are set up. Open your browser and go to http://localhost:80/"
